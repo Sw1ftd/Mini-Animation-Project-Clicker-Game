@@ -18,15 +18,15 @@ function setup() {
   upgrades[8] = new Upgrade(0, 400, 1000000, "darkgray", 2000, 0)
   upgrades[9] = new Upgrade(0, 450, 10000000, "gray", 10000, 0)
   upgrades2[0] = new Upgrade(width-150, 0, 50, "red", 1, 0)
-  upgrades2[1] = new Upgrade(width-150, 50, 150, "blue", 5, 0)
-  upgrades2[2] = new Upgrade(width-150, 100, 750, "green", 10, 5)
-  upgrades2[3] = new Upgrade(width-150, 150, 2500, "yellow", 25, 5)
-  upgrades2[4] = new Upgrade(width-150, 200, 7500, "purple", 50, 5)
-  upgrades2[5] = new Upgrade(width-150, 250, 15000, "orange", 100, 10)
-  upgrades2[6] = new Upgrade(width-150, 300, 75000, "white", 250, 10)
-  upgrades2[7] = new Upgrade(width-150, 350, 500000, "lightgray", 500, 10)
-  upgrades2[8] = new Upgrade(width-150, 400, 7500000, "darkgray", 1000, 15)
-  upgrades2[9] = new Upgrade(width-150, 450, 25000000, "gray", 10000, 20)
+  upgrades2[1] = new Upgrade(width-150, 50, 150, "blue", 10, 5)
+  upgrades2[2] = new Upgrade(width-150, 100, 750, "green", 25, 5)
+  upgrades2[3] = new Upgrade(width-150, 150, 2500, "yellow", 50, 5)
+  upgrades2[4] = new Upgrade(width-150, 200, 7500, "purple", 100, 10)
+  upgrades2[5] = new Upgrade(width-150, 250, 15000, "orange", 250, 10)
+  upgrades2[6] = new Upgrade(width-150, 300, 75000, "white", 750, 10)
+  upgrades2[7] = new Upgrade(width-150, 350, 500000, "lightgray", 2500, 15)
+  upgrades2[8] = new Upgrade(width-150, 400, 7500000, "darkgray", 15000, 20)
+  upgrades2[9] = new Upgrade(width-150, 450, 25000000, "gray", 250000, 25)
 }
 
 function draw() {
@@ -62,14 +62,14 @@ function mousePressed() {
       score += pPC;
   }
   for(let i = 0; i < upgrades.length; i++) {
-    if(pC(mouseX, mouseY, upgrades[i].x, upgrades[i].y, upgrades[i].width, upgrades[i].height) && upgrades[i].cost <= score) {
+    if(pC(mouseX, mouseY, upgrades[i].x, upgrades[i].y, upgrades[i].width, upgrades[i].height) && Math.round(upgrades[i].cost) <= score) {
       score -= Math.round(upgrades[i].cost)
       pPC += upgrades[i].boost
       upgrades[i].cost = upgrades[i].cost*1.150
     }
   }
   for(let i = 0; i < upgrades2.length; i++) {
-    if(pC(mouseX, mouseY, upgrades2[i].x, upgrades2[i].y, upgrades2[i].width, upgrades2[i].height) && upgrades2[i].cost <= score) {
+    if(pC(mouseX, mouseY, upgrades2[i].x, upgrades2[i].y, upgrades2[i].width, upgrades2[i].height) && Math.round(upgrades2[i].cost) <= score) {
       score -= Math.round(upgrades2[i].cost)
       pPS += upgrades2[i].boost
       upgrades2[i].cost = upgrades2[i].cost*1.250
